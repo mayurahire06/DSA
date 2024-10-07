@@ -8,17 +8,14 @@ int partition(int arr[], int lb, int ub){
 
     while(start < end){
 
-        // Increment start until you find an element greater than the pivot or reach the boundary
         while(arr[start] <= pivot && start < ub){ 
             start++;
         }
 
-        // Decrement end until you find an element smaller than or equal to the pivot or reach lb
         while(arr[end] > pivot && end > lb){
             end--;
         }
 
-        // Swap elements at start and end
         if(start < end){
             int temp = arr[start];
             arr[start] = arr[end];
@@ -26,19 +23,19 @@ int partition(int arr[], int lb, int ub){
         }
     }
 
-    // Swapping the pivot element with the element at 'end'
+  
     int temp = arr[lb];
     arr[lb] = arr[end];
     arr[end] = temp;
 
-    return end; // Return the pivot position
+    return end;
 }
 
 void quickSort(int arr[], int lb, int ub) {
     if (lb < ub) {
         int pivot = partition(arr, lb, ub);
-        quickSort(arr, lb, pivot-1); // Sort the left part
-        quickSort(arr, pivot+1, ub); // Sort the right part
+        quickSort(arr, lb, pivot-1);
+        quickSort(arr, pivot+1, ub);
     }
 }
 
