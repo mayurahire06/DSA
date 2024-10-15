@@ -6,17 +6,26 @@ struct Node {
     struct Node* next;
 };
 
-int main() {
-    int n;
-    printf("Enter the number of nodes: ");
-    scanf("%d", &n);
-
+// Function to create the linked list
+struct Node *create() {
+    int n, data;
     struct Node* head = NULL;
     struct Node* current = NULL;
 
-    for (int i = 1; i <= n; i++) {
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    printf("Enter the nodes: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &data);
         struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-        newNode->data = i;
+        
+        if (newNode == NULL) {
+            printf("Memory allocation failed\n");
+            exit(1);
+        }
+
+        newNode->data = data;
         newNode->next = NULL;
 
         if (head == NULL) {
@@ -27,20 +36,34 @@ int main() {
             current = newNode;
         }
     }
+    return head;
+}
 
-    current = head;
+// Function to display the linked list
+void display(struct Node* current) {
+    printf("Linked list:\n");
     while (current != NULL) {
         printf("%d -> ", current->data);
         current = current->next;
     }
     printf("NULL\n");
+}
 
-    current = head;
+// Function to free the nodes in the linked list
+void freeNode(struct Node* current) {
     while (current != NULL) {
-        struct Node* nextNode = current->next;
-        free(current);
-        current = nextNode;
+        struct Node* temp = current;  
+        current = current->next;     
+        free(temp);                  
     }
+}
+
+int main() {
+    struct Node *head;
+
+    head = create();
+    display(head);
+    freeNode(head);
 
     return 0;
 }
