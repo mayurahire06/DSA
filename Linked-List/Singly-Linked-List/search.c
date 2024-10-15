@@ -15,7 +15,6 @@ struct Node *create() {
     printf("Enter the number of nodes: ");
     scanf("%d", &n);
 
-    // If no nodes to be created, return NULL
     if (n == 0) {
         printf("No nodes to create.\n");
         return NULL;
@@ -26,7 +25,6 @@ struct Node *create() {
         scanf("%d", &data);
         struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
-        // Check if malloc was successful
         if (newNode == NULL) {
             printf("Memory allocation failed\n");
             exit(1);
@@ -74,13 +72,7 @@ void search(int x, struct Node* current) {
 }
 
 // Function to free the nodes in the linked list
-void freeNode(struct Node* current) {
-    while (current != NULL) {
-        struct Node* temp = current;
-        current = current->next;
-        free(temp);
-    }
-}
+
 
 int main() {
     int x;
