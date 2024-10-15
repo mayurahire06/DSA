@@ -72,7 +72,13 @@ void search(int x, struct Node* current) {
 }
 
 // Function to free the nodes in the linked list
-
+void freeNode(struct Node* current) {
+    while (current != NULL) {
+        struct Node* temp = current;
+        current = current->next;
+        free(temp);
+    }
+}
 
 int main() {
     int x;
