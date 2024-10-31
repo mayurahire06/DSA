@@ -60,7 +60,6 @@ void deleteLast(){
         prev->next = NULL;
 
     free(current);
-   
 }
 
 void deletePosition(){
@@ -96,6 +95,15 @@ void display(){
     printf("NULL");
 }
 
+void freeNode(){
+    temp = head;
+    while(head != NULL){
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
+
 void main(){
 
     head = create();
@@ -111,4 +119,6 @@ void main(){
     
     deletePosition();
     display();
+
+    freeNode(head);
 }

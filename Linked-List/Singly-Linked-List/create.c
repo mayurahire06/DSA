@@ -54,7 +54,7 @@ void freeNode(struct Node* current) {
     while (current != NULL) {
         struct Node* temp = current;  
         current = current->next;     
-        free(temp);                  
+        free(temp);                
     }
 }
 

@@ -64,6 +64,14 @@ Node *reverse(Node *head){
     return head;
 }
 
+void freeNode(Node *head){
+    Node *current = head;
+    while(head != NULL){
+        current = head;
+        head = head->next;
+        free(current);
+    }
+}
 
 int main(){
     Node *head;
@@ -72,6 +80,7 @@ int main(){
     head = reverse(head);
     display(head);
 
+    freeNode(head);
     return 0;
 
 }
