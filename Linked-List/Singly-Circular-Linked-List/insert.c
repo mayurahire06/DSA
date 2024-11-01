@@ -165,8 +165,9 @@ int main(){
     // insertLast(head);
     // display(head);
 
-    freeNode(head);
     head = insertPosition(head);
     display(head);
 
+    freeNode(head);
+    return 0;
 }
