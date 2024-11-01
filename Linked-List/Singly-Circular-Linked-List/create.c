@@ -48,11 +48,28 @@ void display(Node *head){
     printf("%d", current->data);
 }
 
+void freeNode(Node *head){
+    Node *temp;
+    if (head == NULL) {
+        return; 
+    }
+
+    temp = head;
+    do{
+        head = head->next;
+        free(temp);
+        temp = head;
+    }while (temp != head);
+
+    head = NULL; // Optional: set head to NULL to avoid dangling pointer
+}
+
 int main(){
     Node *head;
 
     head = create();
     display(head);
+    freeNode(head);
 
     return 0;
 }
