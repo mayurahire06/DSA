@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define structure for a Binary Tree node
+// Structure of Binary Tree node
 typedef struct Node {
     int data;
     struct Node* left;
